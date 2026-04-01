@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect & Grow | Island-Wide Entrepreneurship Summit</title>
+    <meta name="description" content="Join the inaugural Portmore Summit - the first stop on our island-wide journey connecting Jamaican entrepreneurs with essential government, financial, and talent networks.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* High-End Color Tokens (HSL) */
+            --brand-primary: hsl(15, 85%, 55%);
+            --brand-primary-light: hsl(15, 85%, 65%);
+            --brand-secondary: hsl(210, 70%, 15%);
+            --brand-accent: hsl(150, 60%, 30%);
+            
+            --bg-offwhite: hsl(210, 20%, 98%);
+            --bg-dark: hsl(220, 30%, 8%);
+            --bg-glass: hsla(210, 70%, 15%, 0.85);
+
+            --text-main: hsl(220, 20%, 15%);
+            --text-muted: hsl(220, 10%, 45%);
+            --text-light: hsl(0, 0%, 100%);
+            --text-on-accent: hsl(210, 70%, 15%);
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            
+            --shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.04);
+            --shadow-float: 0 12px 48px rgba(0, 0, 0, 0.08);
+
+            --container-width: 1200px;
+            --nav-height: 72px;
+        }
+
+        /* Essential Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-padding-top: var(--nav-height);
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            html { scroll-behavior: smooth; }
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+            background: var(--bg-offwhite);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Typography Guidelines */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: var(--brand-secondary);
+            text-wrap: balance;
+        }
+
+        p { text-wrap: pretty; }
+
+        /* Custom Focus Ring */
+        :focus-visible {
+            outline: 2px solid var(--brand-primary);
+            outline-offset: 4px;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-primary);
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            border-bottom-left-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+            z-index: 1000;
+            text-decoration: none;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 0.02em;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: var(--brand-primary);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--text-light); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--brand-primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-primary-light);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(8, 12, 16, 0.4), var(--bg-dark));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            padding: 0 4%;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--brand-primary);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 92px);
+            line-height: 1.05;
+            margin-bottom: 32px;
+            color: var(--text-light);
+            text-wrap: balance;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--brand-primary);
+        }
+
+        .hero-sub {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-wrap: pretty;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 4%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: var(--container-width);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--brand-primary);
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 56px);
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .section-text {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Bento Grid Audiences */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .audience-card {
+            background: var(--text-light);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-float);
+        }
+
+        .audience-icon {
+            font-size: 32px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .audience-card h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Quote Section */
+        .quote-box {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 64px;
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .quote-box blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            line-height: 1.3;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        .quote-box cite {
+            display: block;
+            font-size: 13px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 80px 4% 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo { margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; width: 100%; text-align: center;}
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text-light); }
+
+        .copyright {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .grid-2, .audience-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links { display: none; }
+            .hero { height: auto; min-height: 600px; padding-top: 120px; padding-bottom: 80px;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo" aria-label="Connect & Grow Home">
+                <span class="logo-main">Connect & Grow</span>
+                <span class="logo-sub">Portmore Summit 2026</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#attend">Attend</a></li>
+                <li><a href="#vendors">Vendors</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="#register" class="btn btn-primary">Register Free</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <section class="hero">
+            <img src="assets/hero.png" alt="Entrepreneurs networking at a premium Caribbean business summit" class="hero-bg" width="1600" height="900" fetchpriority="high">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">The Island-Wide Journey Begins</div>
+                <h1>Empowering the Next <em>Generation</em> of Growth.</h1>
+                <p class="hero-sub">Welcome to the inaugural Portmore Summit. We&rsquo;re bridging the gap between local talent & the essential networks that power island-wide expansion.</p>
+                <div class="hero-ctas">
+                    <a href="#register" class="btn btn-primary">Reserve Your Spot</a>
+                    <a href="#vendors" class="btn btn-outline" style="border: 1px solid white; color: white;">Apply as Vendor</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-container grid-2">
+                <div>
+                    <span class="section-label">The Mission</span>
+                    <h2 class="section-title">The tools for success exist. <em>We help you find them.</em></h2>
+                    <p class="section-text">Connect & Grow brings the entire ecosystem to you: government agencies, financial institutions, & expert trainers. Everything you need to scale, in one place.</p>
+                    <a href="#register" class="btn btn-primary">Get Started Now</a>
+                </div>
+                <div class="quote-box">
+                    <blockquote aria-label="Matthew, Founder of Connect & Grow quote">&ldquo;There is so much diversity in Portmore &mdash; and we need to tap into it for Jamaica&rsquo;s future.&rdquo;</blockquote>
+                    <cite>&mdash; Matthew, Founder &middot; Connect & Grow</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="attend" style="background: hsl(210, 20%, 95%);">
+            <div class="section-container">
+                <div style="text-align: center; margin-bottom: 64px;">
+                    <span class="section-label">Opportunities</span>
+                    <h2 class="section-title">A Summit for Everyone.</h2>
+                </div>
+                <div class="audience-grid">
+                    <div class="audience-card">
+                        <span class="audience-icon" aria-hidden="true">🌱</span>
+                        <h3>Entrepreneurs</h3>
+                        <p>Discover grants, funding, & mentorship you are eligible for right now.</p>
+                    </div>
+                    <div class="audience-card" id="vendors">
+                        <span class="audience-icon" aria-hidden="true">🏪</span>
+                        <h3>Vendors</h3>
+                        <p>Get your products & services in front of an engaged community audience.</p>
+                    </div>
+                    <div class="audience-card">
+                        <span class="audience-icon" aria-hidden="true">🤝</span>
+                        <h3>Partners</h3>
+                        <p>Connect with Portmore&rsquo;s vibrant community in an authentic environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sponsors" style="text-align: center;">
+            <div class="section-container">
+                <span class="section-label">Get Involved</span>
+                <h2 class="section-title">Be part of something <em>memorable.</em></h2>
+                <p class="section-text" style="max-width: 600px; margin-left: auto; margin-right: auto;">Join our list of official partners supporting the growth of local businesses.</p>
+                <a href="mailto:hello@connectandgrow.com" class="btn btn-primary" style="padding: 16px 40px; font-size: 16px;">Contact Our Partnership Team</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <span class="logo-main">Connect & Grow</span>
+        </div>
+        <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#attend">Attend</a></li>
+            <li><a href="#vendors">Apply as Vendor</a></li>
+            <li><a href="#sponsors">Partnerships</a></li>
+        </ul>
+        <p class="copyright">Inaugural Portmore Summit &middot; Part of the Connect & Grow Island Tour &copy; 2026</p>
+    </footer>
+
+</body>
+
+</html>
